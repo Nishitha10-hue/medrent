@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedRentia | Premium Medical Equipment Rental</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Premium Theme */
+        :root {
+            --primary: #2a6bcc;
+            --primary-dark: #1a56b4;
+            --secondary: #3acf99;
+            --accent: #ff6b8b;
+            --light: #ffffff;
+            --light-bg: #f8fafc;
+            --light-transparent: rgba(255, 255, 255, 0.92);
+            --dark: #1a1a2e;
+            --dark-light: #2d2d44;
+            --gray: #8a94a6;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --shadow-light: 0 10px 20px rgba(0, 0, 0, 0.05);
+            --shadow-heavy: 0 30px 60px rgba(0, 0, 0, 0.12);
+            --border-radius: 20px;
+            --border-radius-sm: 12px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-dark: linear-gradient(135deg, var(--primary-dark), #2db58a);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 5% 10%, rgba(42, 107, 204, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 95% 90%, rgba(58, 207, 153, 0.03) 0%, transparent 20%);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Premium Glassmorphism */
+        .glass {
+            background: var(--light-transparent);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .glass-dark {
+            background: rgba(26, 26, 46, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: var(--border-radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn i {
+            font-size: 18px;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 25px rgba(42, 107, 204, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(42, 107, 204, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 107, 139, 0.3);
+        }
+
+        .btn-accent:hover {
+            background: #ff5577;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 107, 139, 0.4);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-success:hover {
+            background: #0da271;
+            transform: translateY(-5px);
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: var(--light-transparent);
+            backdrop-filter: blur(15px);
+            padding: 12px 0;
+            box-shadow: var(--shadow-light);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 8px 20px rgba(42, 107, 204, 0.3);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            -webkit-text-fill-color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 16px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .cart-icon-wrapper {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .cart-icon:hover {
+            color: var(--primary);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(255, 107, 139, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(42, 107, 204, 0.1) 0%, rgba(58, 207, 153, 0.1) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientText 8s ease infinite;
+        }
+
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--dark-light);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-heavy);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--transition);
+        }
+
+        .hero-image img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 60px;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            background: var(--light-transparent);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Equipment Section */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .equipment-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            background: white;
+            border: 1px solid var(--gray-light);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--dark-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(42, 107, 204, 0.2);
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .equipment-card {
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-15px);
+        }
+
+        .equipment-image {
+            height: 220px;
+            overflow: hidden;
+            border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+        }
+
+        .equipment-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .equipment-card:hover .equipment-image img {
+            transform: scale(1.1);
+        }
+
+        .equipment-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .equipment-category {
+            display: inline-block;
+            background: rgba(58, 207, 153, 0.1);
+            color: var(--secondary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .equipment-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .equipment-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .equipment-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .price-compare {
+            font-size: 14px;
+            color: var(--success);
+            margin-top: 5px;
+        }
+
+        .price-compare i {
+            margin-right: 5px;
+        }
+
+        .equipment-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-more-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, #f0f7ff 0%, #f0fff9 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 35px 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 10px 25px rgba(42, 107, 204, 0.2);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 420px;
+            height: 100vh;
+            background: var(--light-transparent);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            transition: right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--shadow-heavy);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 25px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: 1.5rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-cart:hover {
+            color: var(--accent);
+        }
+
+        .cart-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 15px;
+            border: 1px solid var(--gray-light);
+            transition: var(--transition);
+        }
+
+        .cart-item:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-light);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gray-light);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .cart-item-quantity {
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: auto;
+        }
+
+        .cart-footer {
+            padding: 25px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-summary {
+            margin-bottom: 25px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .summary-row.total {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            padding-top: 15px;
+            border-top: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .empty-cart i {
+            font-size: 4rem;
+            color: var(--gray-light);
+            margin-bottom: 20px;
+        }
+
+        /* Checkout Modal */
+        .checkout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .checkout-content {
+            background: white;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: var(--shadow-heavy);
+            transform: translateY(30px);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .checkout-modal.active .checkout-content {
+            transform: translateY(0);
+        }
+
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .checkout-header i {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .checkout-header h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .checkout-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius-sm);
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(42, 107, 204, 0.1);
+        }
+
+        .checkout-summary {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 30px;
+        }
+
+        .checkout-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 4000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .success-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-content {
+            background: var(--gradient);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 600px;
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+            box-shadow: var(--shadow-heavy);
+            transform: scale(0.8) rotate(-5deg);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .success-modal.active .success-content {
+            transform: scale(1) rotate(0);
+        }
+
+        .success-icon {
+            font-size: 6rem;
+            margin-bottom: 30px;
+            animation: bounce 1s ease infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+
+        .success-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .success-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .order-details {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .order-details h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .order-items {
+            margin-bottom: 15px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding-top: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #b0b7c3;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #b0b7c3;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-links i {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #8a94a6;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .hero-text h1 {
+                font-size: 3.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text p {
+                margin: 0 auto 40px;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--light-transparent);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 30px;
+                gap: 25px;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 0;
+            }
+            
+            .hero {
+                padding-top: 140px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .equipment-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .checkout-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .equipment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cart-item-image {
+                margin: 0 auto;
+            }
+            
+            .cart-item-controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <img src="medrentia-logo-white.png" height="60" width="80">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="logo-text">Med<span>Rentia</span></div>
+            </a>    
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="active">Home</a>
+                <a href="#equipment">Equipment</a>
+                <a href="#features">Why Us</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <div class="cart-icon-wrapper" id="cartIcon">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Premium Medical Equipment Rentals</h1>
+                    <p>Access state-of-the-art medical equipment at unbeatable prices. We offer same-day delivery, professional setup, and 24/7 support for all your medical needs.</p>
+                    <div class="hero-buttons">
+                        <a href="#equipment" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Browse Equipment
+                        </a>
+                        <a href="#features" class="btn btn-secondary">
+                            <i class="fas fa-play-circle"></i> How It Works
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Modern Medical Equipment">
+                </div>
+            </div>
+            
+            <div class="stats glass">
+                <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-text">Equipment Types</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-text">Support Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50%</div>
+                    <div class="stat-text">Cost Savings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-text">Happy Customers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section id="equipment">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Medical Equipment</h2>
+                <p class="section-subtitle">Rent from our extensive collection of premium medical equipment at prices 50% lower than competitors</p>
+            </div>
+            
+            <div class="equipment-filters">
+                <button class="filter-btn active" data-filter="all">All Equipment</button>
+                <button class="filter-btn" data-filter="mobility">Mobility</button>
+                <button class="filter-btn" data-filter="monitoring">Monitoring</button>
+                <button class="filter-btn" data-filter="respiratory">Respiratory</button>
+                <button class="filter-btn" data-filter="therapy">Therapy</button>
+            </div>
+            
+            <div class="equipment-grid" id="equipmentGrid">
+                <!-- Equipment cards will be generated by JavaScript -->
+            </div>
+            
+            <div class="view-more-container">
+                <button class="btn btn-secondary" id="loadMoreBtn">
+                    <i class="fas fa-plus"></i> Load More Equipment
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose MedRentia</h2>
+                <p class="section-subtitle">We're revolutionizing medical equipment rentals with premium service at affordable prices</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Same-Day Delivery</h3>
+                    <p>Get your equipment delivered and set up within hours of ordering.</p>
+                </div>
+                
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Sterilized & Safe</h3>
+                    <p>All equipment undergoes hospital-grade sterilization before delivery.</p>
+                </div>
+                
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Expert Support</h3>
+                    <p>Medical professionals available round the clock for assistance.</p>
+                </div>
+                
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3 class="feature-title">Best Price Guarantee</h3>
+                    <p>We'll match any lower price you find for the same equipment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Rental Cart</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-content">
+            <div class="cart-items" id="cartItemsContainer">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">₹0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <span id="deliveryFee">₹0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Insurance</span>
+                    <span id="insuranceFee">₹0</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="cartTotal">₹0</span>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary btn-block" id="checkoutBtn">
+                <i class="fas fa-lock"></i> Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content glass">
+            <div class="checkout-header">
+                <i class="fas fa-shopping-bag"></i>
+                <h3>Complete Your Rental</h3>
+                <p>Enter your details to confirm your equipment rental</p>
+            </div>
+            
+            <div class="checkout-summary" id="checkoutSummary">
+                <!-- Checkout summary will be dynamically added here -->
+            </div>
+            
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="John Smith" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="+91 98765 43210" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" class="form-control" rows="3" placeholder="Enter your full address for delivery" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rentalDays">Rental Duration (Days)</label>
+                    <input type="number" id="rentalDays" class="form-control" min="1" max="30" value="7" required>
+                </div>
+            </form>
+            
+            <div class="checkout-buttons">
+                <button type="button" class="btn btn-secondary" id="cancelCheckout">
+                    <i class="fas fa-arrow-left"></i> Back to Cart
+                </button>
+                <button type="submit" class="btn btn-success" id="confirmOrder">
+                    <i class="fas fa-check"></i> Confirm Rental
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Thank You for Your Order!</h2>
+            <p>Your medical equipment rental has been confirmed. We'll deliver and set up your equipment within the next 24 hours.</p>
+            
+            <div class="order-details" id="orderDetails">
+                <!-- Order details will be dynamically added here -->
+            </div>
+            
+            <button class="btn btn-accent" id="closeSuccess">
+                <i class="fas fa-home"></i> Return to Homepage
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="logo-text" style="-webkit-text-fill-color: white;">Med<span style="-webkit-text-fill-color: var(--accent);">Rentia</span></div>
+                    </div>
+                    <p class="footer-text">Providing premium medical equipment rentals with professional service and unbeatable prices.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#equipment"><i class="fas fa-chevron-right"></i> Equipment</a></li>
+                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Why Choose Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Pricing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Equipment Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-wheelchair"></i> Mobility Aids</a></li>
+                        <li><a href="#"><i class="fas fa-heartbeat"></i> Monitoring</a></li>
+                        <li><a href="#"><i class="fas fa-lungs"></i> Respiratory</a></li>
+                        <li><a href="#"><i class="fas fa-bed"></i> Patient Care</a></li>
+                        <li><a href="#"><i class="fas fa-stethoscope"></i> Diagnostics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-phone"></i> +91 800 123 4567</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> support@medrentia.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Medical Center, Health City</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> 24/7 Support Available</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2026 MedRentia. All rights reserved. | <a href="#" style="color: var(--secondary); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--secondary); text-decoration: none;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Medical Equipment Data with updated prices in INR
+        const equipmentData = [
+    {
+        id: 1,
+        name: "Electric Wheelchair",
+        category: "mobility",
+        price: 800,
+        comparePrice: 2100,
+        image: "https://dmesuperstore.com/cdn/shop/files/RebelWheelchair_4.png?v=1766534174&width=1946",
+        description: "Premium electric wheelchair with joystick control, comfortable seating, and long battery life.",
+        features: ["Electric", "Adjustable", "Foldable"],
+        rating: 4.8
+    },
+    {
+        id: 2,
+        name: "Hospital Stretcher",
+        category: "mobility",
+        price: 2500,
+        comparePrice: 2900,
+        image: "https://tse3.mm.bing.net/th/id/OIP.1r50DPHPs88Kj12KRF-glgHaF0?pid=Api&P=0&h=220",
+        description: "Professional hospital-grade stretcher with adjustable height and safety rails.",
+        features: ["Adjustable", "Safety Rails", "Locking Wheels"],
+        rating: 4.9
+    },
+    {
+        id: 3,
+        name: "Digital BP Monitor",
+        category: "monitoring",
+        price: 650,
+        comparePrice: 1250,
+        image: "https://tse2.mm.bing.net/th/id/OIP.prwcOJPUPsFHwqEcBJL8igHaHa?pid=Api&P=0&h=220",
+        description: "Automatic blood pressure monitor with large display and memory function.",
+        features: ["Digital", "Memory Function", "Irregular HB Detect"],
+        rating: 4.7
+    },
+    {
+        id: 4,
+        name: "Oxygen Concentrator",
+        category: "respiratory",
+        price: 1800,
+        comparePrice: 3700,
+        image: "https://tse2.mm.bing.net/th/id/OIP.EVNa2pB5IN9dOs3S1Z6F4wHaHa?pid=Api&P=0&h=220",
+        description: "5L oxygen concentrator with adjustable flow settings and quiet operation.",
+        features: ["5L Capacity", "Adjustable Flow", "Quiet Operation"],
+        rating: 4.9
+    },
+    {
+        id: 5,
+        name: "Pulse Oximeter",
+        category: "monitoring",
+        price: 500,
+        comparePrice: 1000,
+        image: "https://tse2.mm.bing.net/th/id/OIP.3LsH8AHjPVCstMwe6cKX8gHaHa?pid=Api&P=0&h=220",
+        description: "Finger pulse oximeter for accurate SpO2 and heart rate monitoring.",
+        features: ["SpO2 Monitoring", "Heart Rate", "Portable"],
+        rating: 4.6
+    },
+    {
+        id: 6,
+        name: "Compression Nebulizer",
+        category: "respiratory",
+        price: 850,
+        comparePrice: 1650,
+        image: "https://images.pexels.com/photos/3844581/pexels-photo-3844581.jpeg?auto=compress&cs=tinysrgb&w=800",
+        description: "Medical nebulizer machine for asthma and respiratory treatment.",
+        features: ["Adjustable Mist", "Quiet", "Portable"],
+        rating: 4.7
+    },
+    {
+        id: 7,
+        name: "IV Infusion Pump",
+        category: "therapy",
+        price: 2100,
+        comparePrice: 4150,
+        image: "https://images.pexels.com/photos/3845126/pexels-photo-3845126.jpeg?auto=compress&cs=tinysrgb&w=800",
+        description: "Programmable IV infusion pump with safety features and multiple modes.",
+        features: ["Programmable", "Safety Alarms", "Battery Backup"],
+        rating: 4.9
+    },
+    {
+        id: 8,
+        name: "Patient Monitor",
+        category: "monitoring",
+        price: 2500,
+        comparePrice: 5000,
+        image: "https://storage.googleapis.com/avante/images/2386-1-philips-c3-monitor.jpg",
+        description: "Multi-parameter patient monitor for ICU and hospital use.",
+        features: ["ECG", "SpO2", "NIBP", "Temperature"],
+        rating: 5.0
+    },
+    {
+        id: 9,
+        name: "CPAP Machine",
+        category: "respiratory",
+        price: 1650,
+        comparePrice: 3300,
+        image: "https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=800",
+        description: "Auto CPAP machine for sleep apnea with humidifier and mask.",
+        features: ["Auto-adjusting", "Humidifier", "Data Recording"],
+        rating: 4.8
+    },
+    {
+        id: 10,
+        name: "Walkers & Rollators",
+        category: "mobility",
+        price: 750,
+        comparePrice: 1500,
+        image: "https://images.pexels.com/photos/7551674/pexels-photo-7551674.jpeg?auto=compress&cs=tinysrgb&w=800",
+        description: "Adjustable walker with wheels, seat, and storage basket.",
+        features: ["Adjustable", "Seat Included", "Storage Basket"],
+        rating: 4.5
+    },
+    {
+        id: 11,
+        name: "ECG Machine",
+        category: "monitoring",
+        price: 2900,
+        comparePrice: 5800,
+        image: "https://images.pexels.com/photos/4225880/pexels-photo-4225880.jpeg?auto=compress&cs=tinysrgb&w=800",
+        description: "Portable 12-lead ECG machine with interpretation software.",
+        features: ["12-Lead", "Portable", "Interpretation"],
+        rating: 4.9
+    },
+    {
+        id: 12,
+        name: "Suction Machine",
+        category: "therapy",
+        price: 1250,
+        comparePrice: 2500,
+        image: "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800",
+        description: "Medical suction unit for airway clearance and wound drainage.",
+        features: ["Adjustable Pressure", "Portable", "Easy to Clean"],
+        rating: 4.7
+    }
+];
+
+        // Cart state
+        let cart = [];
+        let displayedEquipment = 8;
+        
+        // DOM Elements
+        const cartIcon = document.getElementById('cartIcon');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        const cartCountElement = document.querySelector('.cart-count');
+        const cartSubtotalElement = document.getElementById('cartSubtotal');
+        const cartTotalElement = document.getElementById('cartTotal');
+        const deliveryFeeElement = document.getElementById('deliveryFee');
+        const insuranceFeeElement = document.getElementById('insuranceFee');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const checkoutModal = document.getElementById('checkoutModal');
+        const cancelCheckout = document.getElementById('cancelCheckout');
+        const confirmOrderBtn = document.getElementById('confirmOrder');
+        const successModal = document.getElementById('successModal');
+        const closeSuccess = document.getElementById('closeSuccess');
+        const equipmentGrid = document.getElementById('equipmentGrid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const header = document.getElementById('header');
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderEquipment();
+            setupEventListeners();
+            updateCart();
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+        
+        // Render equipment cards
+        function renderEquipment(filter = 'all') {
+            equipmentGrid.innerHTML = '';
+            
+            const filteredEquipment = filter === 'all' 
+                ? equipmentData.slice(0, displayedEquipment)
+                : equipmentData.filter(item => item.category === filter).slice(0, displayedEquipment);
+            
+            filteredEquipment.forEach(item => {
+                const savings = Math.round(((item.comparePrice - item.price) / item.comparePrice) * 100);
+                
+                const equipmentCard = document.createElement('div');
+                equipmentCard.className = `equipment-card glass`;
+                equipmentCard.setAttribute('data-category', item.category);
+                equipmentCard.innerHTML = `
+                    <div class="equipment-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="equipment-content">
+                        <span class="equipment-category">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
+                        <h3 class="equipment-name">${item.name}</h3>
+                        <p class="equipment-desc">${item.description}</p>
+                        
+                        <div class="equipment-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-star" style="color: #ffb400;"></i>
+                                <span>${item.rating}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-bolt" style="color: #ff6b8b;"></i>
+                                <span>Same-Day Delivery</span>
+                            </div>
+                        </div>
+                        
+                        <div class="equipment-price">₹${item.price}<small>/day</small></div>
+                        <div class="price-compare">
+                            <i class="fas fa-tag"></i> Save ${savings}% (vs. ₹${item.comparePrice})
+                        </div>
+                        
+                        <div class="card-actions">
+                            <button class="btn btn-primary btn-sm add-to-cart-btn" data-id="${item.id}" style="flex-grow: 1;">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn btn-secondary btn-sm view-details-btn" data-id="${item.id}">
+                                <i class="fas fa-info"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                equipmentGrid.appendChild(equipmentCard);
+            });
+            
+            // Add event listeners to new buttons
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.closest('.add-to-cart-btn').getAttribute('data-id'));
+                    addToCart(id);
+                });
+            });
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Cart open/close
+            cartIcon.addEventListener('click', openCart);
+            closeCart.addEventListener('click', closeCartModal);
+            
+            // Checkout flow
+            checkoutBtn.addEventListener('click', openCheckout);
+            cancelCheckout.addEventListener('click', closeCheckout);
+            confirmOrderBtn.addEventListener('click', confirmOrder);
+            closeSuccess.addEventListener('click', closeSuccessModal);
+            
+            // Filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filter = btn.getAttribute('data-filter');
+                    displayedEquipment = 8;
+                    renderEquipment(filter);
+                });
+            });
+            
+            // Load more button
+            loadMoreBtn.addEventListener('click', () => {
+                displayedEquipment += 4;
+                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                renderEquipment(activeFilter);
+                
+                if (displayedEquipment >= equipmentData.length) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            });
+            
+            // Mobile menu
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close modals on outside click
+            window.addEventListener('click', (e) => {
+                if (e.target === cartModal) closeCartModal();
+                if (e.target === checkoutModal) closeCheckout();
+                if (e.target === successModal) closeSuccessModal();
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Cart functions
+        function addToCart(id) {
+            const equipment = equipmentData.find(item => item.id === id);
+            if (!equipment) return;
+            
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    ...equipment,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${equipment.name} added to cart!`);
+        }
+        
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+            
+            // Update cart display
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Your cart is empty</h3>
+                        <p>Add some medical equipment to get started!</p>
+                    </div>
+                `;
+                
+                cartSubtotalElement.textContent = '₹0';
+                cartTotalElement.textContent = '₹0';
+                deliveryFeeElement.textContent = '₹0';
+                insuranceFeeElement.textContent = '₹0';
+                return;
+            }
+            
+            let subtotal = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">₹${item.price} / day</div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn decrease-btn" data-index="${index}">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="cart-item-quantity">${item.quantity}</span>
+                            <button class="quantity-btn increase-btn" data-index="${index}">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="cart-item-remove" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            // Calculate fees (adjusted for INR)
+            const deliveryFee = subtotal > 4000 ? 0 : 799;
+            const insuranceFee = subtotal * 0.05; // 5% insurance
+            const total = subtotal + deliveryFee + insuranceFee;
+            
+            // Update totals
+            cartSubtotalElement.textContent = `₹${subtotal.toFixed(0)}`;
+            deliveryFeeElement.textContent = deliveryFee === 0 ? 'FREE' : `₹${deliveryFee.toFixed(0)}`;
+            insuranceFeeElement.textContent = `₹${insuranceFee.toFixed(0)}`;
+            cartTotalElement.textContent = `₹${total.toFixed(0)}`;
+            
+            // Add event listeners to cart controls
+            document.querySelectorAll('.decrease-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.closest('.decrease-btn').getAttribute('data-index'));
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity--;
+                        updateCart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.increase-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.closest('.increase-btn').getAttribute('data-index'));
+                    cart[index].quantity++;
+                    updateCart();
+                });
+            });
+            
+            document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.closest('.cart-item-remove').getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+        
+        function openCart() {
+            cartModal.classList.add('active');
+        }
+        
+        function closeCartModal() {
+            cartModal.classList.remove('active');
+        }
+        
+        // Checkout functions
+        function openCheckout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'warning');
+                return;
+            }
+            
+            // Populate checkout summary
+            const checkoutSummary = document.getElementById('checkoutSummary');
+            let summaryHTML = '<h4>Order Summary</h4>';
+            
+            cart.forEach(item => {
+                summaryHTML += `
+                    <div class="order-item">
+                        <span>${item.name} (${item.quantity} × ₹${item.price})</span>
+                        <span>₹${(item.price * item.quantity).toFixed(0)}</span>
+                    </div>
+                `;
+            });
+            
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const deliveryFee = subtotal > 4000 ? 0 : 799;
+            const insuranceFee = subtotal * 0.05;
+            const total = subtotal + deliveryFee + insuranceFee;
+            
+            summaryHTML += `
+                <div class="order-item">
+                    <span>Subtotal</span>
+                    <span>₹${subtotal.toFixed(0)}</span>
+                </div>
+                <div class="order-item">
+                    <span>Delivery</span>
+                    <span>${deliveryFee === 0 ? 'FREE' : '₹' + deliveryFee.toFixed(0)}</span>
+                </div>
+                <div class="order-item">
+                    <span>Insurance (5%)</span>
+                    <span>₹${insuranceFee.toFixed(0)}</span>
+                </div>
+                <div class="order-item" style="font-weight: 700; border-top: 2px solid rgba(0,0,0,0.1); padding-top: 10px;">
+                    <span>Total</span>
+                    <span>₹${total.toFixed(0)}</span>
+                </div>
+            `;
+            
+            checkoutSummary.innerHTML = summaryHTML;
+            
+            // Show checkout modal
+            closeCartModal();
+            checkoutModal.classList.add('active');
+        }
+        
+        function closeCheckout() {
+            checkoutModal.classList.remove('active');
+            openCart();
+        }
+        
+        function confirmOrder() {
+            const form = document.getElementById('checkoutForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                rentalDays: parseInt(document.getElementById('rentalDays').value),
+                orderDate: new Date().toLocaleDateString('en-IN', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                })
+            };
+            
+            // Calculate totals
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const deliveryFee = subtotal > 4000 ? 0 : 799;
+            const insuranceFee = subtotal * 0.05;
+            const total = subtotal + deliveryFee + insuranceFee;
+            
+            // Populate success modal
+            const orderDetails = document.getElementById('orderDetails');
+            let detailsHTML = `
+                <h4>Order Details</h4>
+                <p><strong>Order for:</strong> ${formData.name}</p>
+                <p><strong>Delivery to:</strong> ${formData.address}</p>
+                <p><strong>Rental period:</strong> ${formData.rentalDays} days</p>
+                
+                <div class="order-items">
+            `;
+            
+            cart.forEach(item => {
+                detailsHTML += `
+                    <div class="order-item">
+                        <span>${item.name} (${item.quantity})</span>
+                        <span>₹${(item.price * item.quantity).toFixed(0)}</span>
+                    </div>
+                `;
+            });
+            
+            detailsHTML += `
+                </div>
+                <div class="order-total">
+                    <span>Total Amount</span>
+                    <span>₹${total.toFixed(0)}</span>
+                </div>
+                <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">
+                    <i class="fas fa-clock"></i> Your equipment will be delivered within 24 hours.
+                </p>
+            `;
+            
+            orderDetails.innerHTML = detailsHTML;
+            
+            // Show success modal
+            checkoutModal.classList.remove('active');
+            setTimeout(() => {
+                successModal.classList.add('active');
+            }, 300);
+            
+            // Clear cart
+            cart = [];
+            updateCart();
+            
+            // Reset form
+            form.reset();
+        }
+        
+        function closeSuccessModal() {
+            successModal.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Utility functions
+        function showNotification(message, type = 'success') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'success' ? 'var(--success)' : 'var(--warning)'};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+                z-index: 9999;
+                transform: translateX(150%);
+                transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            `;
+            
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(150%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
